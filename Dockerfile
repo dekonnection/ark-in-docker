@@ -20,5 +20,6 @@ EXPOSE ${QUERY_PORT}/udp
 USER steam
 RUN mkdir ${ARK_DIR}
 RUN /home/steam/steamcmd/steamcmd.sh +login anonymous +force_install_dir ${ARK_DIR} +app_update ${STEAM_GAME_ID} +quit
+COPY ark-entrypoint.sh /ark-entrypoint.sh
 
-ENTRYPOINT ["$ARK_DIR/ShooterGame/Binaries/Linux/ShooterGameServer", "$MAP?listen?SessionName=$SESSION_NAME?ServerPassword=$JOIN_PASSWORD?ServerAdminPassword=$ADMIN_PASSWORD?Port=$GAME_PORT?QueryPort=$QUERY_PORT?MaxPlayers=$MAX_PLAYERS -server -log"]
+ENTRYPOINT ["/ark-entrypoint.sh"]
