@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ark-server:
+    image: ark-in-docker:latest
+    environment:
+      - MAP=Ragnarok
+      - SESSION_NAME=ark-in-docker
+      - JOIN_PASSWORD=MyPassword
+      - ADMIN_PASSWORD=MyAdminPassword
+    restart: unless-stopped
+    volumes:
+      - /my/local/path/to/game/saves/:/home/steam/ark/ShooterGame/Saved/
+    network_mode: "bridge"
+    ports:
+      - "7777:7777/udp"
+      - "7778:7778/udp"
+      - "27015:27015/udp"
+    stop_grace_period: 2m
+    stop_signal: SIGINT
