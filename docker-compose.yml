@@ -2,7 +2,7 @@ version: '3'
 
 services:
   ark-server:
-    image: ark-in-docker:latest
+    image: dek/ark-in-docker:20181223-01
     environment:
       - MAP=Ragnarok
       - SESSION_NAME=ark-in-docker
